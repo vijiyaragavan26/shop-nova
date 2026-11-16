@@ -10,6 +10,42 @@ const generateToken = (id) => {
   });
 };
 
+// @desc    Quick Demo Login (Customer or Admin)
+// @route   POST /api/auth/demo/:role
+// @access  Public
+exports.demoLogin = async (req, res, next) => {
+  try {
+    const role = req.params.role === 'admin' ? 'admin' : 'customer';
+    const email = role === 'admin' ? 'admin@shopnova.com' : 'customer@shopnova.com';
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      user = await User.create({
+        name: role === 'admin' ? 'Admin ShopNova' : 'Alex Johnson',
+        email,
+        password: role === 'admin' ? 'AdminPassword123!' : 'Customer123!',
+        role
+      });
+    }
+
+    const token = generateToken(user._id);
+    res.status(200).json({
+      success: true,
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        phone: user.phone,
+        avatar: user.avatar
+      }
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // @desc    Register a new user
 // @route   POST /api/auth/register
 // @access  Public
