@@ -405,7 +405,7 @@ const PORT = process.env.PORT || 5000;
 // Connect Database & Start Server
 connectDB().then(async () => {
   await checkAndSeedDB();
-  app.listen(PORT, () => {
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 [ShopNova API] Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
     console.log(`📡 URL: http://localhost:${PORT}/api/health`);
   });
