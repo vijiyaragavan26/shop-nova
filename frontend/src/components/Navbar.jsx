@@ -13,8 +13,7 @@ import {
   LogOut,
   ShieldAlert,
   Sparkles,
-  Flame,
-  PhoneCall
+  Flame
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
@@ -62,28 +61,6 @@ const Navbar = () => {
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-      {/* Top micro bar */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-1.5 px-4 sm:px-8 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
-            <span className="font-medium text-white">⚡ Festive Super Sale:</span>
-            <span className="hidden sm:inline">Use code <strong className="text-amber-400">NOVA2026</strong> for extra 10% OFF</span>
-          </div>
-
-          <div className="flex items-center space-x-4 text-[11px]">
-            <Link to="/about" className="hover:text-white transition-colors">About ShopNova</Link>
-            <span className="text-slate-700">|</span>
-            <Link to="/contact" className="hover:text-white transition-colors">Help & Contact</Link>
-            <span className="text-slate-700">|</span>
-            <div className="flex items-center text-slate-400">
-              <PhoneCall className="w-3 h-3 mr-1 text-blue-400" />
-              <span>1800-SHOP-NOVA</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Navbar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
